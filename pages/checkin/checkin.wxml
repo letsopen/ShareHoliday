@@ -1,0 +1,48 @@
+
+<!-- pages/checkin/checkin.wxml -->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-info-wrapper" wx:if="{{hasUserInfo}}">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-name">{{userInfo.nickName}}</view>
+    </view>
+    <button wx:else class="login-btn" bindtap="getUserProfile">登录</button>
+  </view>
+
+  <!-- 积分信息区域 -->
+  <view class="points-section">
+    <view class="points-card">
+      <view class="points-title">我的积分</view>
+      <view class="points-value">{{points}}</view>
+      <view class="checkin-info">
+        <text>连续签到: {{checkinDays}}天</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 签到按钮区域 -->
+  <view class="checkin-section">
+    <view class="checkin-card">
+      <view class="today-points">
+        <text>今日签到可获得</text>
+        <text class="points-num">{{todayPoints}}</text>
+        <text>积分</text>
+      </view>
+      <button class="checkin-btn {{checkedIn ? 'checked' : ''}}" bindtap="doCheckin" disabled="{{checkedIn}}">
+        {{checkedIn ? '已签到' : '签到'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 签到规则说明 -->
+  <view class="rules-section">
+    <view class="section-title">签到规则</view>
+    <view class="rules-content">
+      <view class="rule-item">1. 每日签到可获得基础积分10分</view>
+      <view class="rule-item">2. 连续签到每天额外增加1分（上限30分/天）</view>
+      <view class="rule-item">3. 中断签到，连续天数将重新计算</view>
+      <view class="rule-item">4. 积分可用于假期交易和赠予</view>
+    </view>
+  </view>
+</view>

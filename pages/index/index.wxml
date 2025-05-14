@@ -1,0 +1,69 @@
+
+<!--index.wxml-->
+<view class="container">
+  <!-- 顶部用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-info-wrapper" wx:if="{{hasUserInfo}}">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-detail">
+        <view class="user-name">{{userInfo.nickName}}</view>
+        <view class="user-points">积分: {{points}}</view>
+      </view>
+    </view>
+    <button wx:else class="login-btn" bindtap="getUserProfile">登录</button>
+  </view>
+
+  <!-- 功能模块区域 -->
+  <view class="feature-section">
+    <view class="section-title">功能中心</view>
+    <view class="feature-grid">
+      <!-- 签到模块 -->
+      <view class="feature-item" bindtap="navigateToCheckin">
+        <view class="feature-icon checkin-icon">
+          <text class="iconfont">📅</text>
+        </view>
+        <view class="feature-name">每日签到</view>
+        <view class="feature-desc">连续签到领积分</view>
+      </view>
+      
+      <!-- 假期交易模块 (暂未实现) -->
+      <view class="feature-item disabled">
+        <view class="feature-icon market-icon">
+          <text class="iconfont">🏖️</text>
+        </view>
+        <view class="feature-name">假期交易</view>
+        <view class="feature-desc">即将上线</view>
+      </view>
+      
+      <!-- 假期赠予模块 (暂未实现) -->
+      <view class="feature-item disabled">
+        <view class="feature-icon gift-icon">
+          <text class="iconfont">🎁</text>
+        </view>
+        <view class="feature-name">假期赠予</view>
+        <view class="feature-desc">即将上线</view>
+      </view>
+      
+      <!-- 个人中心模块 (暂未实现) -->
+      <view class="feature-item disabled">
+        <view class="feature-icon profile-icon">
+          <text class="iconfont">👤</text>
+        </view>
+        <view class="feature-name">个人中心</view>
+        <view class="feature-desc">即将上线</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 公告区域 -->
+  <view class="notice-section">
+    <view class="section-title">公告</view>
+    <view class="notice-card">
+      <view class="notice-title">欢迎使用假期交易平台</view>
+      <view class="notice-content">
+        <text>平台目前处于测试阶段，已开放签到功能，可通过签到获取积分。</text>
+        <text>后续将陆续开放假期交易、假期赠予等功能，敬请期待！</text>
+      </view>
+    </view>
+  </view>
+</view>
